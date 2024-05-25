@@ -140,8 +140,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'drf_api.wsgi.application'
 
 ALLOWED_HOSTS = [
-    '8000-andreidrobo-restframewo-95dhnilgdvk.ws-eu111.gitpod.io',
-    'https://reactchallenge-b201ad870555.herokuapp.com/'
+    '8000-andreidrobo-restframewo-95dhnilgdvk.ws-eu114.gitpod.io',
+    'reactchallenge-b201ad870555.herokuapp.com'
 ]
 
 
