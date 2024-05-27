@@ -54,6 +54,11 @@ REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'drf_api.serializers.CurrentUserSerializer'
 }
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-andreidrobo-restframewo-95dhnilgdvk.ws-eu114.gitpod.io',
+    'https://reactchallenge-b201ad870555.herokuapp.com',
+]
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -63,7 +68,11 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEV' in os.environ
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    'reactchallenge-b201ad870555.herokuapp.com',
+    '8000-andreidrobo-restframewo-95dhnilgdvk.ws-eu114.gitpod.io',
+    ]
 
 
 # Application definition
@@ -109,13 +118,13 @@ MIDDLEWARE = [
 
 
 if 'CLIENT_ORIGIN' in os.environ:
-        CORS_ALLOWED_ORIGINS = [
-            os.environ.get('CLIENT_ORIGIN')
-        ]
+    CORS_ALLOWED_ORIGINS = [
+        os.environ.get('CLIENT_ORIGIN')
+    ]
 else:
-        CORS_ALLOWED_ORIGIN_REGEXES = [
-            r"^https://.*\.gitpod\.io$",
-        ]
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        r"^https://.*\.gitpod\.io$",
+    ]
 CORS_ALLOW_CREDENTIALS = True
 
 
