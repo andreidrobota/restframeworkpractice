@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
-import re
 
 if os.path.exists('env.py'):
     import env
@@ -67,12 +66,11 @@ CSRF_TRUSTED_ORIGINS = [
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEV' in os.environ
+DEBUG = 'DEBUG' in os.environ
 
 ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),
     'localhost',
-    '8000-andreidrobo-restframewo-95dhnilgdvk.ws-eu114.gitpod.io',
     ]
 
 
@@ -115,6 +113,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'allauth.account.middleware.AccountMiddleware',
 ]
 
 
@@ -122,12 +121,6 @@ if 'CLIENT_ORIGIN' in os.environ:
     CORS_ALLOWED_ORIGINS = [
         os.environ.get('CLIENT_ORIGIN')
     ]
-if 'CLIENT_ORIGIN_DEV' in os.environ:
-    extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
-    CORS_ALLOWED_ORIGIN_REGEXES = [
-        rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
-    ]
-CORS_ALLOW_CREDENTIALS = True
 
 
 ROOT_URLCONF = 'drf_api.urls'
@@ -151,8 +144,9 @@ TEMPLATES = [
 WSGI_APPLICATION = 'drf_api.wsgi.application'
 
 ALLOWED_HOSTS = [
-    '8000-andreidrobo-restframewo-95dhnilgdvk.ws-eu114.gitpod.io',
-    'reactchallenge-b201ad870555.herokuapp.com'
+    '8000-andreidrobo-restframewo-hfo87y2jlep.ws-eu115.gitpod.io',
+    'reactchallenge-b201ad870555.herokuapp.com',
+    'localhost'
 ]
 
 
